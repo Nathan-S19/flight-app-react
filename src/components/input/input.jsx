@@ -42,7 +42,7 @@ export default function Input({ handleArrival, handleDeparture }) {
           type='text'
           id='arrival'
           className='input'
-          placeholder='EHAM'
+          placeholder='YBBN'
         ></input>
         <p
           id='helper-text-explanation'

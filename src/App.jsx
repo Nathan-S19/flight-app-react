@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import Input from './components/input/input';
 import Submit from './components/button/submit';
 import options from './constants/options';
 import FlightInfo from './components/flightinfo/flight-info';
+
+export const AppContext = createContext();
 
 export default function App() {
   const [departure, setDeparture] = useState('');
@@ -33,19 +35,21 @@ export default function App() {
     setLoading(true);
   };
   return (
-    <div className='App'>
-      <h1> Get Flight Route Data </h1>
-      <Input
-        handleArrival={handleArrivalInput}
-        handleDeparture={handleDepartureInput}
-      />
-      <Submit onSubmit={handleSubmit} />
-      <FlightInfo
-        departure={departure}
-        arrival={arrival}
-        routeData={routeData}
-        loading={loading}
-      />
-    </div>
+    <AppContext.Provider value={{ routeData, loading }}>
+      <div className='App'>
+        <h1> Get Flight Route Data </h1>
+        <Input
+          handleArrival={handleArrivalInput}
+          handleDeparture={handleDepartureInput}
+        />
+        <Submit onSubmit={handleSubmit} />
+        <FlightInfo
+          departure={departure}
+          arrival={arrival}
+          routeData={routeData}
+          loading={loading}
+        />
+      </div>
+    </AppContext.Provider>
   );
 }
