@@ -35,7 +35,7 @@ export default function Input({ handleArrival, handleDeparture }) {
           htmlFor='arrival'
           className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
         >
-          Your departure airport
+          Arrival Airport
         </label>
         <input
           onInput={handleArrival}
